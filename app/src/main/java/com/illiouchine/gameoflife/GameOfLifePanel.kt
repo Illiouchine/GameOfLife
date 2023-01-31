@@ -31,27 +31,33 @@ fun GameOfLifePanel(
         modifier = modifier
             .padding(16.dp)
             .pointerInput(Unit) {
-                detectDragGestures(
-                    onDrag = { change: PointerInputChange, dragAmont ->
-                        // Do something onCompleted(tap.position.x)
-                        val minSize = min(this.size.width, this.size.height)
-                        val relativeCellSize = (minSize) / initialBoard.boardSize
-                        val cellX = (change.position.x / relativeCellSize).toInt()
-                        val cellY = (change.position.y / relativeCellSize).toInt()
-                        onClick(cellX, cellY)
-                    }
-                )
                 detectTapGestures(
                     onTap = {
                         // Do something onCompleted(tap.position.x)
                         val minSize = min(this.size.width, this.size.height)
                         val relativeCellSize = (minSize) / initialBoard.boardSize
+
                         val cellX = (it.x / relativeCellSize).toInt()
                         val cellY = (it.y / relativeCellSize).toInt()
+
                         onClick(cellX, cellY)
                     },
                 )
             }
+            .pointerInput(Unit) {
+                detectDragGestures(
+                    onDrag = { change: PointerInputChange, dragAmont ->
+                        // Do something onCompleted(tap.position.x)
+                        val minSize = min(this.size.width, this.size.height)
+                        val relativeCellSize = (minSize) / initialBoard.boardSize
+
+                        val cellX = (change.position.x / relativeCellSize).toInt()
+                        val cellY = (change.position.y / relativeCellSize).toInt()
+
+                        onClick(cellX, cellY)
+                    }
+                )
+            },
     ) {
         val minSize = min(this.size.width, this.size.height)
         val relativeCellSize = minSize / initialBoard.boardSize
