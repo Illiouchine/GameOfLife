@@ -1,4 +1,4 @@
-package com.illiouchine.gameoflife
+package com.illiouchine.gameoflife.model
 
 data class Coordinate(val x: Int = 0, val y: Int = 0) {
     fun getNeighborsCoordinate(): List<Coordinate> {

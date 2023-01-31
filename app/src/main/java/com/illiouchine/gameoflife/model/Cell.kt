@@ -1,4 +1,4 @@
-package com.illiouchine.gameoflife
+package com.illiouchine.gameoflife.model
 
 data class Cell(
     val state: State = State.Dead,

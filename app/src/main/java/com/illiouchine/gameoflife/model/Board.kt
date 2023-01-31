@@ -1,4 +1,4 @@
-package com.illiouchine.gameoflife
+package com.illiouchine.gameoflife.model
 
 import kotlin.random.Random
 
@@ -21,7 +21,7 @@ class Board private constructor(
         return this
     }
 
-    fun tick():Board{
+    fun tick(): Board {
         val oldCells = cells.toMap()
         val newCells = mutableMapOf<Coordinate, Cell>()
 

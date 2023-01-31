@@ -2,6 +2,9 @@ package com.illiouchine.gameoflife
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.illiouchine.gameoflife.model.Board
+import com.illiouchine.gameoflife.model.Control
+import com.illiouchine.gameoflife.model.Coordinate
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -11,7 +14,7 @@ class GameBoardViewModel: ViewModel() {
     private val _boardState : MutableStateFlow<Board> by lazy { MutableStateFlow(Board.withRandomCells()) }
     val boardState = _boardState.asStateFlow()
 
-    private val _controlState : MutableStateFlow<Control> by lazy { MutableStateFlow(Control.Initial) }
+    private val _controlState : MutableStateFlow<Control> by lazy { MutableStateFlow(Control(gridSize = 30)) }
     val controlState = _controlState.asStateFlow()
 
     private var timerJob: Job? =null
@@ -54,14 +57,14 @@ class GameBoardViewModel: ViewModel() {
     fun stop() {
         viewModelScope.launch {
             timerJob?.cancelAndJoin()
-            _controlState.value = Control.Initial
+            _controlState.value = _controlState.value.copy(timer = Control.Timer.Initial)
         }
     }
 
     fun play() {
         timerJob?.cancel()
         timerJob = viewModelScope.launch {
-            _controlState.value = Control.Running
+            _controlState.value = _controlState.value.copy(timer = Control.Timer.Running)
             while (isActive){
                 tick()
                 delay(1*1000)

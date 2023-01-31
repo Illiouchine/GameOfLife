@@ -7,6 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.illiouchine.gameoflife.model.Control
 
 @Composable
 fun ControlPanel(
@@ -46,13 +47,13 @@ fun ControlPanel(
             .padding(16.dp)
             .fillMaxWidth()
     ) {
-        when (controlState) {
-            Control.Initial -> {
+        when (controlState.timer) {
+            Control.Timer.Initial -> {
                 Button(onClick = { playClick() }) {
                     Text(text = "Play")
                 }
             }
-            Control.Running -> {
+            Control.Timer.Running -> {
                 Button(onClick = { stopClick() }) {
                     Text(text = "Stop")
                 }

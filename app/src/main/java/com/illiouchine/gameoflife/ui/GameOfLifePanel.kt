@@ -17,6 +17,8 @@ import androidx.compose.ui.input.pointer.PointerInputChange
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.illiouchine.gameoflife.model.Board
+import com.illiouchine.gameoflife.model.Cell
 import com.illiouchine.gameoflife.ui.theme.GameOfLifeTheme
 import kotlin.math.min
 
