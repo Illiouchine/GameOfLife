@@ -1,4 +1,4 @@
-package com.illiouchine.gameoflife
+package com.illiouchine.gameoflife.ui
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
@@ -27,6 +27,7 @@ import kotlin.math.min
 fun GameOfLifePanel(
     modifier: Modifier,
     initialBoard: Board,
+    showGrid: Boolean,
     onClick: (x: Int, y: Int) -> Unit
 ) {
     Canvas(
@@ -78,15 +79,17 @@ fun GameOfLifePanel(
                 size = Size(relativeCellSize, relativeCellSize),
                 style = Fill,
             )
-            drawRect(
-                color = Color.LightGray,
-                topLeft = Offset(
-                    (relativeCellSize * cell.key.x.toFloat()),
-                    (relativeCellSize * cell.key.y.toFloat())
-                ),
-                size = Size(relativeCellSize, relativeCellSize),
-                style = Stroke(1.dp.toPx()),
-            )
+            if (showGrid) {
+                drawRect(
+                    color = Color.LightGray,
+                    topLeft = Offset(
+                        (relativeCellSize * cell.key.x.toFloat()),
+                        (relativeCellSize * cell.key.y.toFloat())
+                    ),
+                    size = Size(relativeCellSize, relativeCellSize),
+                    style = Stroke(1.dp.toPx()),
+                )
+            }
         }
     }
 }
@@ -99,7 +102,8 @@ fun GameOfLifePanelPreview() {
             Modifier
                 .fillMaxSize()
                 .background(Color.White),
-            Board.withRandomCells()
+            Board.withRandomCells(),
+            false,
         ) { _, _ -> Unit }
     }
 }
