@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import com.illiouchine.gameoflife.model.Coordinate
 import com.illiouchine.gameoflife.ui.ControlPanel
@@ -29,22 +30,22 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    val board = gameBoardViewModel.boardState.collectAsState()
-                    val control = gameBoardViewModel.controlState.collectAsState()
+                    val board by gameBoardViewModel.boardState.collectAsState()
+                    val control by gameBoardViewModel.controlState.collectAsState()
 
                     Column {
                         GameOfLifePanel(
-                            Modifier
+                            modifier = Modifier
                                 .aspectRatio(1f)
                                 .fillMaxWidth(),
-                            board.value,
-                            showGrid = control.value.gridEnabled,
+                            initialBoard = board,
+                            showGrid = control.gridEnabled,
                             onClick = { x, y ->
                                 gameBoardViewModel.touch(Coordinate(x, y))
                             }
                         )
                         ControlPanel(
-                            controlState = control.value,
+                            controlState = control,
                             restartWithAlive = { gameBoardViewModel.restartWithAlive() },
                             restartWithRandom = { gameBoardViewModel.restartWithRandom() },
                             restartWithDead = { gameBoardViewModel.restartWithDead() },

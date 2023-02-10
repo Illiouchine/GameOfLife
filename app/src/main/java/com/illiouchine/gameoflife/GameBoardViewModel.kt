@@ -42,21 +42,21 @@ class GameBoardViewModel : ViewModel() {
 
     fun restartWithAlive() {
         viewModelScope.launch {
-            val newBoard = Board.withAliveCells(_boardState.value.boardSize)
+            val newBoard = Board.withAliveCells(_boardState.value.getBoardSize())
             _boardState.value = newBoard
         }
     }
 
     fun restartWithRandom() {
         viewModelScope.launch {
-            val newBoard = Board.withRandomCells(_boardState.value.boardSize)
+            val newBoard = Board.withRandomCells(_boardState.value.getBoardSize())
             _boardState.value = newBoard
         }
     }
 
     fun restartWithDead() {
         viewModelScope.launch {
-            val newBoard = Board.withDeadCells(_boardState.value.boardSize)
+            val newBoard = Board.withDeadCells(_boardState.value.getBoardSize())
             _boardState.value = newBoard
         }
     }
@@ -83,6 +83,7 @@ class GameBoardViewModel : ViewModel() {
         viewModelScope.launch {
             val newBoard = Board.withRandomCells(boardSize)
             _boardState.value = newBoard
+            _controlState.value = _controlState.value.copy(gridSize = boardSize)
         }
     }
 

@@ -1,11 +1,15 @@
 package com.illiouchine.gameoflife.model
 
+import kotlin.math.sqrt
 import kotlin.random.Random
 
-class Board private constructor(
-    val boardSize: Int,
+data class Board(
     val cells: Map<Coordinate, Cell> = emptyMap()
 ) {
+
+    fun getBoardSize(): Int {
+        return sqrt(cells.size.toDouble()).toInt()
+    }
 
     fun touch(coordinate: Coordinate): Board {
         val mutableCell = cells.toMutableMap()
@@ -16,7 +20,7 @@ class Board private constructor(
             } else {
                 cell.copy(state = Cell.State.Alive)
             }
-            return Board(boardSize, mutableCell)
+            return Board(mutableCell)
         }
         return this
     }
@@ -28,7 +32,7 @@ class Board private constructor(
         oldCells.forEach { (coordinate, cell) ->
             val aliveNeighbors = countAliveNeighbors(coordinate, oldCells)
 
-            if (cell.state == Cell.State.Alive){
+            if (cell.state == Cell.State.Alive) {
                 //Any live cell with fewer than two live neighbours dies, as if by underpopulation.
                 //Any live cell with two or three live neighbours lives on to the next generation.
                 //Any live cell with more than three live neighbours dies, as if by overpopulation.
@@ -42,20 +46,20 @@ class Board private constructor(
                 }
             } else {
                 //Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
-                if (aliveNeighbors == 3){
+                if (aliveNeighbors == 3) {
                     newCells[coordinate] = cell.copy(state = Cell.State.Alive)
-                }else {
+                } else {
                     newCells[coordinate] = cell
                 }
             }
         }
 
-        return Board(boardSize, newCells)
+        return Board(newCells)
     }
 
     private fun countAliveNeighbors(coordinate: Coordinate, cells: Map<Coordinate, Cell>): Int {
         val neighbors: MutableMap<Coordinate, Cell> = mutableMapOf()
-        for (neighborCoordinate in coordinate.getNeighborsCoordinate()){
+        for (neighborCoordinate in coordinate.getNeighborsCoordinate()) {
             cells[neighborCoordinate]?.let {
                 neighbors.put(neighborCoordinate, it)
             }
@@ -65,7 +69,7 @@ class Board private constructor(
     }
 
     companion object {
-        private const val BOARD_SIZE_DEFAULT : Int = 30
+        private const val BOARD_SIZE_DEFAULT: Int = 30
 
         fun withDeadCells(boardSize: Int = BOARD_SIZE_DEFAULT): Board {
             val initialCells: MutableMap<Coordinate, Cell> = mutableMapOf()
@@ -74,8 +78,9 @@ class Board private constructor(
                     initialCells[Coordinate(x, y)] = Cell(Cell.State.Dead)
                 }
             }
-            return Board(boardSize, initialCells)
+            return Board(initialCells)
         }
+
         fun withAliveCells(boardSize: Int = BOARD_SIZE_DEFAULT): Board {
             val initialCells: MutableMap<Coordinate, Cell> = mutableMapOf()
             for (x in 0 until boardSize) {
@@ -83,20 +88,21 @@ class Board private constructor(
                     initialCells[Coordinate(x, y)] = Cell(Cell.State.Alive)
                 }
             }
-            return Board(boardSize, initialCells)
+            return Board(initialCells)
         }
+
         fun withRandomCells(boardSize: Int = BOARD_SIZE_DEFAULT): Board {
             val initialCells: MutableMap<Coordinate, Cell> = mutableMapOf()
             for (x in 0 until boardSize) {
                 for (y in 0 until boardSize) {
-                    if (Random.nextBoolean()){
+                    if (Random.nextBoolean()) {
                         initialCells[Coordinate(x, y)] = Cell(Cell.State.Alive)
-                    }else {
+                    } else {
                         initialCells[Coordinate(x, y)] = Cell(Cell.State.Dead)
                     }
                 }
             }
-            return Board(boardSize, initialCells)
+            return Board(initialCells)
         }
     }
 }
