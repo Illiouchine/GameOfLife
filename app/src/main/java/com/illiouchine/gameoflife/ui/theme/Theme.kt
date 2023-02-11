@@ -3,12 +3,19 @@ package com.illiouchine.gameoflife.ui.theme
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 @Composable
 fun GameOfLifeTheme(
     content: @Composable () -> Unit
 ) {
+
+    val systemUiController = rememberSystemUiController()
+    systemUiController.setSystemBarsColor(
+        color = mediumGreen
+    )
 
     val gameOfLifeColors = CustomColors(
         background = listOf(darkGreen),

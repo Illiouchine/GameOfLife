@@ -23,7 +23,6 @@ import androidx.compose.ui.unit.dp
 import com.illiouchine.gameoflife.model.Board
 import com.illiouchine.gameoflife.model.Cell
 import com.illiouchine.gameoflife.ui.board.drawAliveCell
-import com.illiouchine.gameoflife.ui.board.drawDeadCell
 import com.illiouchine.gameoflife.ui.board.drawGrid
 import com.illiouchine.gameoflife.ui.theme.GameOfLifeTheme
 import kotlin.math.min
@@ -87,8 +86,6 @@ fun GameOfLifePanel(
         for (cell in initialBoard.cells) {
             if (cell.value.state == Cell.State.Alive) {
                 drawAliveCell(cell, relativeCellSize, padding = padding.toPx())
-            } else {
-                drawDeadCell(cell, relativeCellSize)
             }
             if (showGrid) {
                 drawGrid(cell, relativeCellSize, padding = padding.toPx())

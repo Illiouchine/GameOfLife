@@ -45,6 +45,7 @@ fun ResetButton(
                 contentDescription = null,
                 tint = GameOfLifeTheme.colors.onPrimary)
         }
+
         DropdownMenu(
             modifier = Modifier,
             expanded = expanded,
