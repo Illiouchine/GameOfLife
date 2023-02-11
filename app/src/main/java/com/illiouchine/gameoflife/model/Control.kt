@@ -2,7 +2,7 @@ package com.illiouchine.gameoflife.model
 
 data class Control(
     val timer: Timer = Timer.Initial,
-    val gridSize: Int,
+    val gridSize: Int = 30,
     val gridEnabled: Boolean = false,
     val speed: Speed = Speed.OneTime
 ) {

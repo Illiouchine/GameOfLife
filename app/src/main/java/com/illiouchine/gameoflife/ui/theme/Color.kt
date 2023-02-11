@@ -2,10 +2,15 @@ package com.illiouchine.gameoflife.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Purple80 = Color(0xFFD0BCFF)
-val PurpleGrey80 = Color(0xFFCCC2DC)
-val Pink80 = Color(0xFFEFB8C8)
+const val backgroundColor: Long = 0xFF08130d
 
-val Purple40 = Color(0xFF6650a4)
-val PurpleGrey40 = Color(0xFF625b71)
-val Pink40 = Color(0xFF7D5260)
+val darkGreen = Color(backgroundColor)
+val mediumGreen = Color(0xFF002210)
+val spacerGreen = Color(0xFF001c0d)
+val lightGreen = Color(0xFF016c33)
+
+val pink = Color(0xFFa10066)
+val darkBlue = Color(0xFF002630)
+val lightBlue = Color(0xFF01576c)
+
+val white = Color(0xFFE5F7E8)
