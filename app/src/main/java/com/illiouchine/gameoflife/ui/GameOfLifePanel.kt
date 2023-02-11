@@ -9,8 +9,13 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.CornerRadius
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.DrawScope
+import androidx.compose.ui.graphics.drawscope.Fill
 import androidx.compose.ui.input.pointer.PointerInputChange
 import androidx.compose.ui.input.pointer.PointerInputScope
 import androidx.compose.ui.input.pointer.pointerInput
@@ -18,8 +23,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.illiouchine.gameoflife.model.Board
 import com.illiouchine.gameoflife.model.Cell
+import com.illiouchine.gameoflife.ui.board.drawAliveCell
+import com.illiouchine.gameoflife.ui.board.drawDeadCell
+import com.illiouchine.gameoflife.ui.board.drawGrid
 import com.illiouchine.gameoflife.ui.theme.GameOfLifeTheme
 import kotlin.math.min
+import kotlin.math.sqrt
 
 
 @Composable
@@ -57,30 +66,46 @@ fun GameOfLifePanel(
                 )
             },
     ) {
+        drawRoundRect(
+            brush = Brush.radialGradient(
+                Pair(0.0f, Color(0.0f, 0.173f, 0.051f, 1.0f)),
+                Pair(0.5f, Color(0.031f, 0.137f, 0.137f, 1.0f)),
+                Pair(1f, Color(0.0f, 0.173f, 0.051f, 1.0f)),
+                radius = this.size.width * 0.8f
+            ),
+            topLeft = Offset.Zero,
+            size = this.size,
+            style = Fill,
+            cornerRadius = CornerRadius(8.dp.toPx())
+        )
+
         val relativeCellSize = calcRelativeCellSize(boardSize = initialBoard.getBoardSize())
 
         for (cell in initialBoard.cells) {
             if (cell.value.state == Cell.State.Alive) {
-                drawAliveCell(cell, relativeCellSize)
+                drawAliveCell(cell, relativeCellSize, padding = padding.toPx())
             } else {
                 drawDeadCell(cell, relativeCellSize)
             }
             if (showGrid) {
-                drawGrid(cell, relativeCellSize)
+               drawGrid(cell, relativeCellSize, padding = padding.toPx())
             }
         }
     }
 }
 
+val padding = 4.dp
+
 private fun DrawScope.calcRelativeCellSize(boardSize: Int): Float {
     val minSize = min(this.size.width, this.size.height)
-    return minSize / boardSize.toFloat()
+    return (minSize - (2 * padding.toPx())) / boardSize.toFloat()
 }
 
 private fun PointerInputScope.calcCellPosition(x: Float, y: Float, boardSize: Int): Pair<Int, Int> {
     val minSize = min(this.size.width, this.size.height)
-    val relativeCellSize: Float = minSize.toFloat() / boardSize.toFloat()
+    val relativeCellSize: Float = (minSize - (2 * padding.toPx())) / boardSize.toFloat()
 
+    // TODO Manage padding
     val cellX = (x / relativeCellSize).toInt()
     val cellY = (y / relativeCellSize).toInt()
 

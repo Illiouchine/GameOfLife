@@ -1,4 +1,4 @@
-package com.illiouchine.gameoflife.ui
+package com.illiouchine.gameoflife.ui.board
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.size
@@ -13,10 +13,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.illiouchine.gameoflife.model.Cell
 import com.illiouchine.gameoflife.model.Coordinate
+import com.illiouchine.gameoflife.ui.theme.backgroundColor
 
 
 fun DrawScope.drawDeadCell(cell: Map.Entry<Coordinate, Cell>, cellSize: Float) {
-    drawRect(
+    /*drawRect(
         color = Color(0.18f, 0.133f, 0.455f, 1.0f),
         topLeft = Offset(
             (cellSize * cell.key.x.toFloat()),
@@ -25,10 +26,12 @@ fun DrawScope.drawDeadCell(cell: Map.Entry<Coordinate, Cell>, cellSize: Float) {
         size = Size(cellSize, cellSize),
         style = Fill,
     )
+
+     */
 }
 
 
-@Preview
+@Preview(showBackground = true, backgroundColor = backgroundColor)
 @Composable
 fun DeadCellPreview() {
     val cells = mapOf(Pair(Coordinate(0, 0), Cell(Cell.State.Dead)))
