@@ -11,7 +11,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.DrawScope
@@ -28,7 +27,6 @@ import com.illiouchine.gameoflife.ui.board.drawDeadCell
 import com.illiouchine.gameoflife.ui.board.drawGrid
 import com.illiouchine.gameoflife.ui.theme.GameOfLifeTheme
 import kotlin.math.min
-import kotlin.math.sqrt
 
 
 @Composable
@@ -40,7 +38,12 @@ fun GameOfLifePanel(
 ) {
     Canvas(
         modifier = modifier
-            .padding(16.dp)
+            .padding(
+                8.dp,
+                8.dp,
+                8.dp,
+                0.dp
+            )
             .pointerInput(initialBoard.getBoardSize()) {
                 detectTapGestures(
                     onTap = {
@@ -68,9 +71,9 @@ fun GameOfLifePanel(
     ) {
         drawRoundRect(
             brush = Brush.radialGradient(
-                Pair(0.0f, Color(0.0f, 0.173f, 0.051f, 1.0f)),
-                Pair(0.5f, Color(0.031f, 0.137f, 0.137f, 1.0f)),
-                Pair(1f, Color(0.0f, 0.173f, 0.051f, 1.0f)),
+                Pair(0.0f, Color(0.0f, 44 / 255f, 13 / 255f, 1.0f)),
+                Pair(0.5f, Color(8 / 255f, 35 / 255f, 35 / 255f, 1.0f)),
+                Pair(1f, Color(0.0f, 44 / 255f, 13 / 255f, 1.0f)),
                 radius = this.size.width * 0.8f
             ),
             topLeft = Offset.Zero,
@@ -88,7 +91,7 @@ fun GameOfLifePanel(
                 drawDeadCell(cell, relativeCellSize)
             }
             if (showGrid) {
-               drawGrid(cell, relativeCellSize, padding = padding.toPx())
+                drawGrid(cell, relativeCellSize, padding = padding.toPx())
             }
         }
     }

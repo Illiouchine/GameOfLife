@@ -1,10 +1,12 @@
 package com.illiouchine.gameoflife.ui.component
 
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.compositeOver
 import androidx.compose.ui.tooling.preview.Preview
 import com.illiouchine.gameoflife.ui.theme.GameOfLifeTheme
@@ -12,11 +14,13 @@ import com.illiouchine.gameoflife.ui.theme.GameOfLifeTheme
 @Preview
 @Composable
 fun GameOfLifeButton(
-    onClick : () -> Unit = {},
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit = {},
     colors: GameOfLifeButtonColors = GameOfLifeButtonColors.Primary,
+    contentPadding: PaddingValues = ButtonDefaults.ContentPadding,
     content: @Composable () -> Unit = { Text(text = "Click") }
 ) {
-    val buttonColors: ButtonColors = when(colors){
+    val buttonColors: ButtonColors = when (colors) {
         GameOfLifeButtonColors.Primary -> ButtonDefaults.buttonColors(
             containerColor = GameOfLifeTheme.colors.primaryContent,
             contentColor = GameOfLifeTheme.colors.onPrimary,
@@ -47,15 +51,17 @@ fun GameOfLifeButton(
     }
 
     Button(
+        modifier = modifier,
         colors = buttonColors,
         shape = GameOfLifeTheme.shapes.button,
+        contentPadding = contentPadding,
         onClick = { onClick() },
     ) {
         content()
     }
 }
 
-sealed class GameOfLifeButtonColors{
+sealed class GameOfLifeButtonColors {
     object Primary : GameOfLifeButtonColors()
     object Secondary : GameOfLifeButtonColors()
     object Tertiary : GameOfLifeButtonColors()
