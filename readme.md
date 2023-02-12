@@ -15,7 +15,7 @@ At each step in time, the following transitions occur:
 ## Setup
 1. In your terminal : Clone this repo with :
 ```sh
-git clone git@github.com:Illiouchine/PipouBrushApp.git
+git clone git@github.com:Illiouchine/GameOfLife.git
 ```
 2. Initialises submodules with :
 ```sh
@@ -42,5 +42,5 @@ This project use the MVI (Model View Intent) architecture and use a custom mvi l
 [todo]()
 
 ## Screenshots
-![screenshots/Screenshots.png]()
+![](screenshots/Screenshots.png)
 
