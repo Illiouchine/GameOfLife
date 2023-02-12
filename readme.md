@@ -1,4 +1,4 @@
-# ![todo]() Game of Life
+# ![](screenshots/Logo.png) Game of Life
 
 ## App Description
 - This app is an implementation of the zero player game name "Game of life" by John Conway's [https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
@@ -42,5 +42,5 @@ This project use the MVI (Model View Intent) architecture and use a custom mvi l
 [todo]()
 
 ## Screenshots
-![todo]()
+![screenshots/Screenshots.png]()
 
