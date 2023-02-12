@@ -1,5 +1,6 @@
 package com.illiouchine.gameoflife.ui.control
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
@@ -27,7 +28,9 @@ fun ResetButton(
             horizontalArrangement = Arrangement.SpaceEvenly,
         verticalAlignment = Alignment.CenterVertically) {
 
-        var expanded by remember{ mutableStateOf(false) }
+        var expanded by remember{ mutableStateOf(true) }
+        // TODO REMOVE
+        //  var expanded by remember{ mutableStateOf(false) }
         var selectedType: ResetType by remember{ mutableStateOf(ResetType.Random) }
 
 
@@ -47,10 +50,14 @@ fun ResetButton(
         }
 
         DropdownMenu(
-            modifier = Modifier,
+            modifier = Modifier.background(color = GameOfLifeTheme.colors.background.first()),
             expanded = expanded,
             onDismissRequest = { expanded = false }) {
             DropdownMenuItem(
+                modifier = Modifier.background(color = GameOfLifeTheme.colors.backgroundSpacer),
+                colors= MenuDefaults.itemColors(
+                    textColor = GameOfLifeTheme.colors.onBackground
+                ),
                 text = { Text(ResetType.Random.name) },
                 onClick = {
                     selectedType = ResetType.Random
@@ -58,11 +65,21 @@ fun ResetButton(
                           },
             )
             DropdownMenuItem(
+                modifier = Modifier.background(color = GameOfLifeTheme.colors.background.first()),
+                colors= MenuDefaults.itemColors(
+                    textColor = GameOfLifeTheme.colors.onBackground
+                ),
                 text = { Text(ResetType.Alive.name) },
-                onClick = { selectedType = ResetType.Alive
-                    expanded = false},
+                onClick = {
+                    selectedType = ResetType.Alive
+                    expanded = false
+                          },
             )
             DropdownMenuItem(
+                modifier = Modifier.background(color = GameOfLifeTheme.colors.backgroundSpacer),
+                colors= MenuDefaults.itemColors(
+                    textColor = GameOfLifeTheme.colors.onBackground
+                ),
                 text = { Text(ResetType.Dead.name) },
                 onClick = { selectedType = ResetType.Dead
                     expanded = false},
