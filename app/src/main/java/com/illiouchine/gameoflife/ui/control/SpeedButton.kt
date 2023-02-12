@@ -23,15 +23,6 @@ fun SpeedButton(
                 contentPadding = PaddingValues(4.dp),
                 onClick = { onSpeedChange(Control.Speed.TwoTime) }
             ) {
-                Text(text = "x2")
-            }
-        }
-        Control.Speed.ThreeTime -> {
-            GameOfLifeButton(
-                modifier = modifier,
-                colors = GameOfLifeButtonColors.Secondary,
-                contentPadding = PaddingValues(4.dp),
-                onClick = { onSpeedChange(Control.Speed.OneTime) }) {
                 Text(text = "x1")
             }
         }
@@ -41,6 +32,15 @@ fun SpeedButton(
                 colors = GameOfLifeButtonColors.Secondary,
                 contentPadding = PaddingValues(4.dp),
                 onClick = { onSpeedChange(Control.Speed.ThreeTime) }) {
+                Text(text = "x2")
+            }
+        }
+        Control.Speed.ThreeTime -> {
+            GameOfLifeButton(
+                modifier = modifier,
+                colors = GameOfLifeButtonColors.Secondary,
+                contentPadding = PaddingValues(4.dp),
+                onClick = { onSpeedChange(Control.Speed.OneTime) }) {
                 Text(text = "x3")
             }
         }

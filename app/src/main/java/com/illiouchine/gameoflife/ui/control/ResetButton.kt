@@ -28,9 +28,7 @@ fun ResetButton(
             horizontalArrangement = Arrangement.SpaceEvenly,
         verticalAlignment = Alignment.CenterVertically) {
 
-        var expanded by remember{ mutableStateOf(true) }
-        // TODO REMOVE
-        //  var expanded by remember{ mutableStateOf(false) }
+        var expanded by remember{ mutableStateOf(false) }
         var selectedType: ResetType by remember{ mutableStateOf(ResetType.Random) }
 
 

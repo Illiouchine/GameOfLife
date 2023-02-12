@@ -41,7 +41,7 @@ fun GameOfLifePanel(
                 8.dp,
                 8.dp,
                 8.dp,
-                0.dp
+                8.dp
             )
             .pointerInput(initialBoard.getBoardSize()) {
                 detectTapGestures(
