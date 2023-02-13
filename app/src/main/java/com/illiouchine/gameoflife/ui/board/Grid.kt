@@ -11,7 +11,7 @@ import com.illiouchine.gameoflife.model.Coordinate
 
 fun DrawScope.drawGrid(cell: Map.Entry<Coordinate, Cell>, cellSize: Float, padding: Float = 10f) {
     drawRect(
-        color = Color.LightGray,
+        color = Color.DarkGray,
         topLeft = Offset(
             (cellSize * cell.key.x.toFloat() + padding),
             (cellSize * cell.key.y.toFloat()+ padding)
