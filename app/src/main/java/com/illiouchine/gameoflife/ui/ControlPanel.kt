@@ -7,8 +7,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.illiouchine.gameoflife.R
 import com.illiouchine.gameoflife.model.Control
 import com.illiouchine.gameoflife.ui.component.GameOfLifeButton
 import com.illiouchine.gameoflife.ui.component.GameOfLifeSlider
@@ -100,10 +102,11 @@ fun ControlPanel(
                 )
                 Spacer(modifier = Modifier.width(16.dp))
                 GameOfLifeButton(
+                    contentPadding = PaddingValues(4.dp),
                     modifier = Modifier.weight(2f),
                     onClick = { tickClick() }
                 ) {
-                    Text(text = "TICK")
+                    Text(text = stringResource(R.string.tick_button))
                 }
                 Spacer(modifier = Modifier.width(16.dp))
                 PlayButton(

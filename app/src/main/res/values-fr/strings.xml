@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Jeu de la Vie</string>
+    <string name="play_button">JOUER</string>
+    <string name="stop_button">ARRETER</string>
+    <string name="reset_button">REINITIALISER</string>
+    <string name="reset_type_random">Hazard</string>
+    <string name="reset_type_alive">Vivant</string>
+    <string name="reset_type_dead">Mort</string>
+    <string name="speed_button_x1">x1</string>
+    <string name="speed_button_x2">x2</string>
+    <string name="speed_button_x3">x3</string>
+    <string name="tick_button">PAS A PAS</string>
+</resources>

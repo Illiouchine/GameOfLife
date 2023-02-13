@@ -4,7 +4,9 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.illiouchine.gameoflife.R
 import com.illiouchine.gameoflife.model.Control
 import com.illiouchine.gameoflife.ui.component.GameOfLifeButton
 import com.illiouchine.gameoflife.ui.component.GameOfLifeButtonColors
@@ -23,7 +25,7 @@ fun SpeedButton(
                 contentPadding = PaddingValues(4.dp),
                 onClick = { onSpeedChange(Control.Speed.TwoTime) }
             ) {
-                Text(text = "x1")
+                Text(text = stringResource(R.string.speed_button_x1))
             }
         }
         Control.Speed.TwoTime -> {
@@ -32,7 +34,7 @@ fun SpeedButton(
                 colors = GameOfLifeButtonColors.Secondary,
                 contentPadding = PaddingValues(4.dp),
                 onClick = { onSpeedChange(Control.Speed.ThreeTime) }) {
-                Text(text = "x2")
+                Text(text = stringResource(R.string.speed_button_x2))
             }
         }
         Control.Speed.ThreeTime -> {
@@ -41,7 +43,7 @@ fun SpeedButton(
                 colors = GameOfLifeButtonColors.Secondary,
                 contentPadding = PaddingValues(4.dp),
                 onClick = { onSpeedChange(Control.Speed.OneTime) }) {
-                Text(text = "x3")
+                Text(text = stringResource(R.string.speed_button_x3))
             }
         }
     }

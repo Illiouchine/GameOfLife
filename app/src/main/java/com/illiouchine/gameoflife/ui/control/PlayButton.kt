@@ -3,6 +3,8 @@ package com.illiouchine.gameoflife.ui.control
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import com.illiouchine.gameoflife.R
 import com.illiouchine.gameoflife.model.Control
 import com.illiouchine.gameoflife.ui.component.GameOfLifeButton
 import com.illiouchine.gameoflife.ui.component.GameOfLifeButtonColors
@@ -11,8 +13,8 @@ import com.illiouchine.gameoflife.ui.component.GameOfLifeButtonColors
 fun PlayButton(
     modifier: Modifier = Modifier,
     controlTimer: Control.Timer = Control.Timer.Initial,
-    onPlayClicked : () -> Unit = {},
-    onStopClicked : () -> Unit = {},
+    onPlayClicked: () -> Unit = {},
+    onStopClicked: () -> Unit = {},
 ) {
     when (controlTimer) {
         Control.Timer.Initial -> {
@@ -21,7 +23,7 @@ fun PlayButton(
                 colors = GameOfLifeButtonColors.Tertiary,
                 onClick = { onPlayClicked() },
             ) {
-                Text(text = "PLAY")
+                Text(text = stringResource(R.string.play_button))
             }
         }
         Control.Timer.Running -> {
@@ -29,7 +31,7 @@ fun PlayButton(
                 modifier = modifier,
                 onClick = { onStopClicked() }
             ) {
-                Text(text = "STOP")
+                Text(text = stringResource(R.string.stop_button))
             }
         }
     }

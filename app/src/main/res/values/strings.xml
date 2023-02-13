@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">GameOfLife</string>
+    <string name="play_button">PLAY</string>
+    <string name="stop_button">STOP</string>
+    <string name="reset_button">RESET</string>
+    <string name="reset_type_random">Random</string>
+    <string name="reset_type_alive">Alive</string>
+    <string name="reset_type_dead">Dead</string>
+    <string name="speed_button_x1">x1</string>
+    <string name="speed_button_x2">x2</string>
+    <string name="speed_button_x3">x3</string>
+    <string name="tick_button">TICK</string>
 </resources>
