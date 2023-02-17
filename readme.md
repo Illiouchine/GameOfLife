@@ -17,21 +17,12 @@ At each step in time, the following transitions occur:
 ```sh
 git clone git@github.com:Illiouchine/GameOfLife.git
 ```
-2. Initialises submodules with :
-```sh
-git submodule update --init --recursive
-```
-3. Open the project in Android Studio
-4. Do a gradle sync
-5. Now you should be able to build and deploy
-6. Enjoy <3
-
-## Submodules
-This project use the MVI (Model View Intent) architecture and use a custom mvi library :
-[https://github.com/Illiouchine/mvi-library](https://github.com/Illiouchine/mvi-library)
+2. Open the project in Android Studio
+3. Do a gradle sync
+4. Now you should be able to build and deploy
+5. Enjoy <3
 
 ## Used Libraries
-- Mvi architecture with [mvi-library](https://github.com/Illiouchine/mvi-library)
 - Ui Rendering with [compose](https://developer.android.com/jetpack/compose)
 - Ui Design with [compose-material3](https://developer.android.com/jetpack/androidx/releases/compose-material3?hl=en)
 
